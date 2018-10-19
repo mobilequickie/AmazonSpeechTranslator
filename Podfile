@@ -9,5 +9,5 @@ target 'SpeechRec' do
   pod 'AWSTranslate'
   pod 'AWSPolly'
   pod 'Pulsator'
-  pod 'DropDown'
+  pod 'DropDown', '2.0.1'
 end

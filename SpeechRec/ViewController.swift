@@ -122,10 +122,12 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
         var translatedLanguageImage = ""
         
         // Setting the background image in the transcribed text view based on the source language (based on the device locale)
-        if (langCode == "en") { // Default
+        guard let languageCode = langCode else { return }
+        
+        if (languageCode == "en") { // Default
             transcribedLanguageImage = "English.png"
         } else {
-            switch langCode {
+            switch languageCode {
             case "fr":
                 transcribedLanguageImage = "French.png"
             case "de":
