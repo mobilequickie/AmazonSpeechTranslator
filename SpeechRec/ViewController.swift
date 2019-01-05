@@ -380,11 +380,12 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
                 return nil
             }
             
-            // Uncomment if you want to play the audio using the system AVAudioPlayer (no speakers, hard to hear) vs External player
-            //self.audioPlayer.replaceCurrentItem(with: AVPlayerItem(url: url as URL))
-            //self.audioPlayer.play()
+            // Using the system AVAudioPlayer (no speakers, hard to hear) vs External player
+            self.audioPlayer.replaceCurrentItem(with: AVPlayerItem(url: url as URL))
+            self.audioPlayer.play()
             
-            self.playAudio(audioURL: url as URL) // External player
+            //self.playAudio(audioURL: url as URL) // External player was working prior to iOS 12
+            
             return nil
         })
     }
