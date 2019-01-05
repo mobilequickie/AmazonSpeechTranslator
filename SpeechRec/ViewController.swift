@@ -170,8 +170,8 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
             dropDown.dataSource = ["English"] // Polly only supports English destination language if the source is anything but English
             dropDown.selectRow(at: 0) // Set default language dropdown to "English"
         } else {
-            dropDown.dataSource = ["French", "German", "Portuguese", "Spanish"] // Polly supports 4 of 7 Amazon Translate languages (May 2018)
-            dropDown.selectRow(at: 3) // Set default language dropdown to "Spanish"
+            dropDown.dataSource = ["Dutch", "French", "German", "Italian", "Japanese", "Polish", "Portuguese", "Spanish"] // Polly supports 4 of 7 Amazon Translate languages (May 2018)
+            dropDown.selectRow(at: 7) // Set default language dropdown to "Spanish"
         }
         
         let item = dropDown.selectedItem
@@ -354,19 +354,24 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
         input.outputFormat = AWSPollyOutputFormat.mp3
         
         // Choose the polly voice personality based on the targetLanguage
-        if (languageCode == "fr") { // French
-            input.voiceId = AWSPollyVoiceId.mathieu
-        }
-        else if (languageCode == "de") { // German
-            input.voiceId = AWSPollyVoiceId.hans
-        }
-        else if (languageCode == "pt") { // Portuguese
-            input.voiceId = AWSPollyVoiceId.ines
-        }
-        else if(languageCode == "es") { // Spanish
-            input.voiceId = AWSPollyVoiceId.penelope
-        }
-        else {
+        switch languageCode {
+            case "nl":
+                input.voiceId = AWSPollyVoiceId.lotte
+            case "fr":
+                input.voiceId = AWSPollyVoiceId.chantal
+            case "de":
+                input.voiceId = AWSPollyVoiceId.hans
+            case "it":
+                input.voiceId = AWSPollyVoiceId.carla
+            case "ja":
+                input.voiceId = AWSPollyVoiceId.mizuki
+            case "pl":
+                input.voiceId = AWSPollyVoiceId.maja
+            case "pt":
+                input.voiceId = AWSPollyVoiceId.ines
+            case "es":
+                input.voiceId = AWSPollyVoiceId.penelope
+        default:
             input.voiceId = AWSPollyVoiceId.kendra // default to English en-US voice if no target language, or "en" found
         }
         
@@ -390,14 +395,22 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
         })
     }
     
-    // Represents the 4 languages that are supported by BOTH Polly and Translate
-    // Amazon Translate supports 7 languages as of May 17 2018. Of those 7, Polly supports 4.
+    // Represents the 8 languages that are supported by BOTH Polly and Translate
+    // Amazon Translate supports more languages and some of those languages have a Polly voice
     func getLanguageCode(selectedlanguage: String) -> String {
         switch selectedlanguage {
+            case "Dutch":
+                return "nl"
             case "French":
                 return "fr"
             case "German":
                 return "de"
+            case "Italian":
+                return "it"
+            case "Japanese":
+                return "ja"
+            case "Polish":
+                return "pl"
             case "Portuguese":
                 return "pt"
             case "Spanish":
