@@ -37,7 +37,6 @@ permissions and limitations under the License.
 //
 
 import UIKit
-import AWSCore 
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -45,19 +44,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
-        // ###Cognito Identity Pool###
-        let cognitoCredentialProvider = AWSCognitoCredentialsProvider(regionType: AWSRegionType.USWest2,
-                                        identityPoolId: "us-west-2:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
-                                        unauthRoleArn: "arn:aws:iam::xxxxxxxxxxxx:role/speechtranslator-stack-UnAuthenticatedRole-1KGJEHDISDWF",
-                                        authRoleArn: "arn:aws:iam::xxxxxxxxxxxx:role/speechtranslator-stack-AuthenticatedRole-AKHJBBDISDXQ",
-                                        identityProviderManager: nil)
-        
-        // ###Service Configuration###
-        let serviceConfiguration = AWSServiceConfiguration(region: .USWest2, credentialsProvider: cognitoCredentialProvider)
-        
-        // ###Service Manager###
-        AWSServiceManager.default().defaultServiceConfiguration = serviceConfiguration
         
         return true
     }

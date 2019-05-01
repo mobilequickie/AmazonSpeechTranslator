@@ -17,6 +17,7 @@ import UIKit
 import Speech
 import AWSTranslate
 import AWSPolly
+import AWSMobileClient
 import AVKit
 import Foundation
 import CoreGraphics
@@ -71,6 +72,20 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        AWSMobileClient.sharedInstance().initialize { (userState, error) in
+            if let userState = userState {
+                print("UserState: \(userState.rawValue)")
+            } else if let error = error {
+                print("error: \(error.localizedDescription)")
+            }
+        }
+        
+        // #Service Configuration#
+        let serviceConfiguration = AWSServiceConfiguration(region: .USWest2, credentialsProvider: AWSMobileClient)
+        
+        // #Service Manager#
+        AWSServiceManager.default().defaultServiceConfiguration = serviceConfiguration
         
         spinner.hidesWhenStopped = true
         

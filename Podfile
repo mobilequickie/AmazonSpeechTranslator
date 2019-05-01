@@ -10,4 +10,5 @@ target 'SpeechRec' do
   pod 'AWSPolly'
   pod 'Pulsator'
   pod 'DropDown', '2.0.1'
+  pod 'AWSMobileClient', '~> 2.9.0'      # Required dependency
 end
