@@ -34,7 +34,7 @@ Note: Creating a CloudFormation Stack to provision the above AWS resources is FR
 5.	On the Review page, check the box to acknowledge that CloudFormation will create IAM resources and click **Create**.
 6.	Wait for the *speechtranslator-stack* stack to reach a status of CREATE_COMPLETE
 7.	With the speechtranslator-stack selected, **click on the Outputs tab** and you should see three rows. We only need the identityPoolId for now.
- ![Stack Output](https://s3-us-west-2.amazonaws.com/mobilequickie/speechtranslator/stack-output-final.png "CloudFormation Stack Output of Cognito Identity Pool details")
+ ![Stack Output](https://s3-us-west-2.amazonaws.com/mobilequickie/speechtranslator/stack-output-final.png)
 8.	Copy the Value for just the identityPoolId as we’ll be pasting this value into the `AWSConfiguration.json` file in our Xcode project.
 
 ## PART 2: Mobile Client Setup (3 1/2 minutes)
@@ -57,7 +57,7 @@ In this part, we'll clone the repo, update Cocoapods, and update the AppDelagate
     $ open SpeechRec.xcworkspace
     ``` 
 4. Update the AWSConfiguration.json by pasting in your own identityPoolId from the output tab of CloudFormation Stack that you created in Part 1, step #7.
- ![Stack Output](https://s3-us-west-2.amazonaws.com/mobilequickie/speechtranslator/appdelegate-stack-config.png "CloudFormation Stack Output of Cognito Identity Pool details")
+ ![Stack Output](https://s3-us-west-2.amazonaws.com/mobilequickie/speechtranslator/appdelegate-stack-config.png)
 
 5. Build and run the app 
 
