@@ -3,5 +3,13 @@
     "Version": "0.1.0",
     "IdentityManager": {
         "Default": {}
+    },
+    "CredentialsProvider": {
+        "CognitoIdentity": {
+            "Default": {
+                "PoolId": "<YOUR-COGNITO-IDENTITY-POOL-ID-HERE>",
+                "Region": "us-west-2"
+            }
+        }
     }
 }

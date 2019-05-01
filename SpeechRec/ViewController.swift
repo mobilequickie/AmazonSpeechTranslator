@@ -82,7 +82,7 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
         }
         
         // #Service Configuration#
-        let serviceConfiguration = AWSServiceConfiguration(region: .USWest2, credentialsProvider: AWSMobileClient)
+        let serviceConfiguration = AWSServiceConfiguration(region: .USWest2, credentialsProvider: AWSMobileClient.sharedInstance())
         
         // #Service Manager#
         AWSServiceManager.default().defaultServiceConfiguration = serviceConfiguration
